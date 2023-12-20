@@ -105,10 +105,12 @@ def run():
     
     #Matriz correlação
     st.info('Através da Matriz de correlação, pude observar que não há variáveis altamente correlacionadas (>=0.8). Observei também que o açúcar residual não possui correlação com a qualidade. As variáveis com maior interferência na qualidade são o álcool, sulfatos e acidez volátil.')
+    
+    fig, ax = plt.subplots(1,1, figsize=(10, 10))
     cor_matrix = df_norm.corr()
     half_matrix = np.triu(cor_matrix)
-    sns.heatmap(cor_matrix, annot=True, fmt='.1f', vmin=-1, vmax=1, cmap='RdBu', mask=half_matrix)
-    plt.show()
+    sns.heatmap(cor_matrix, annot=True, fmt='.1f', vmin=-1, vmax=1, cmap='RdBu', mask=half_matrix, ax=ax)
+    st.pyplot(fig)
     
     df_norm.drop(['fixed acidity','residual sugar','free sulfur dioxide','pH',], axis=1, inplace=True)
     
@@ -143,7 +145,6 @@ def run():
     st.warning(f'RMSE: {rmse:.2f}')
     st.warning(f'MSE: {mse:.2f}')
     
-
 
 if __name__ == "__main__":
     run()

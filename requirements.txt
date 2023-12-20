@@ -3,9 +3,5 @@ numpy
 pandas
 pydeck
 streamlit
-matplotlib.pyplot
-seaborn
 numpy
-sklearn.model_selection
-sklearn.linear_model
-sklearn.metrics
+
